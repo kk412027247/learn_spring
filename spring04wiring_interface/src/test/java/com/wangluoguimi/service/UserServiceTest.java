@@ -1,6 +1,6 @@
 package com.wangluoguimi.service;
 
-import com.wangluoguimi.AppConfig;
+import com.wangluoguimi.config.AppConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
