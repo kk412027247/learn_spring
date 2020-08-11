@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class CDPlayer {
 
-    //    @Autowired
+    @Autowired(required = false)
     private CompactDisc cd;
 
-    //    @Autowired
+    @Autowired
     private Power power;
 
     public CDPlayer() {
@@ -34,12 +34,12 @@ public class CDPlayer {
 //        System.out.println("CDPlayer constructor with parameter");
 //    }
 
-    @Autowired
-    public CDPlayer(CompactDisc cd, Power power) {
-        this.cd = cd;
-        this.power = power;
-        System.out.println("CDPlayer constructor with CompactDisc and Power");
-    }
+//    @Autowired
+//    public CDPlayer(CompactDisc cd, Power power) {
+//        this.cd = cd;
+//        this.power = power;
+//        System.out.println("CDPlayer constructor with CompactDisc and Power");
+//    }
 
 //    @Autowired
 //    public void prepare(CompactDisc cd, Power power) {
@@ -49,6 +49,8 @@ public class CDPlayer {
 
     public void play() {
         power.supply();
-        cd.play();
+        if (cd != null) {
+            cd.play();
+        }
     }
 }
