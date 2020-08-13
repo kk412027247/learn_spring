@@ -17,10 +17,18 @@ public class AppConfig {
         return new UserDaoNormal();
     }
 
+//    @Bean
+//    public UserService getUserServiceNormal(UserDao userDao){
+//        System.out.println("create user service");
+////        UserDao userDao =new UserDaoNormal();
+//        return new UserServiceNormal(userDao);
+//    }
+
     @Bean
     public UserService getUserServiceNormal(UserDao userDao){
         System.out.println("create user service");
-//        UserDao userDao =new UserDaoNormal();
-        return new UserServiceNormal(userDao);
+        UserServiceNormal userServiceNormal =  new UserServiceNormal();
+        userServiceNormal.setUserDao(userDao);
+        return userServiceNormal;
     }
 }
