@@ -1,4 +1,4 @@
-package com.wangluoguimi;
+package com.wangluoguimi.dao;
 
 
 import com.wangluoguimi.config.AppConfig;
@@ -21,3 +21,4 @@ public class UserDaoTest {
         userDao.add();
     }
 }
+
