@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
 
     @Bean
-    public UserDao userDaoNormal(){
+    public UserDao getUserDaoNormal(){
         System.out.println("creating user dao");
         return new UserDaoNormal();
     }
