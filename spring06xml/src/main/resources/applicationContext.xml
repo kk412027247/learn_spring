@@ -1,16 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean class="com.wangluoguimi.soundsystem.CompactDisc" name="compactDisc1 compactDisc12"/>
-    <bean class="com.wangluoguimi.soundsystem.CompactDisc" id="compactDisc2"/>
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="music1" class="com.wangluoguimi.soundsystem.Music">
+        <constructor-arg name="title" value="I Do 1"/>
+        <constructor-arg name="duration" value="270"/>
+    </bean>
+    <bean id="music2" class="com.wangluoguimi.soundsystem.Music">
+        <constructor-arg name="title" value="I Do 2"/>
+        <constructor-arg name="duration" value="270"/>
+    </bean>
+    <bean id="music3" class="com.wangluoguimi.soundsystem.Music">
+        <constructor-arg name="title" value="I Do 3"/>
+        <constructor-arg name="duration" value="270"/>
+    </bean>
+
+    <bean id="music4" class="com.wangluoguimi.soundsystem.Music">
+        <property name="title" value="air ball"/>
+        <property name="duration" value="215"/>
+    </bean>
+
+    <bean id="music5" class="com.wangluoguimi.soundsystem.Music" p:title="love loser" p:duration="350"/>
+
+
+    <bean class="com.wangluoguimi.soundsystem.CompactDisc" name="compactDisc1 compactDisc12">
+        <constructor-arg index="0" name="title" value="I Do"/>
+        <constructor-arg index="1" name="artist" value="mo wen wei"/>
+        <constructor-arg name="tracks">
+            <list>
+                <ref bean="music1"/>
+                <ref bean="music2"/>
+                <ref bean="music3"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean class="com.wangluoguimi.soundsystem.CompactDisc" name="compactDisc3">
+        <constructor-arg index="0" name="title" value="I Do ** "/>
+        <constructor-arg index="1" name="artist" value="mo wen wei **"/>
+        <constructor-arg name="tracks2">
+            <set>
+                <ref bean="music1"/>
+                <ref bean="music1"/>
+                <ref bean="music2"/>
+            </set>
+        </constructor-arg>
+    </bean>
+
+    <bean class="com.wangluoguimi.soundsystem.CompactDisc" name="compactDisc4">
+        <constructor-arg index="0" name="title" value="I Do ** "/>
+        <constructor-arg index="1" name="artist" value="mo wen wei **"/>
+        <constructor-arg name="tracks3">
+            <map>
+                <entry key="m1" value-ref="music1"/>
+                <entry key="m2" value-ref="music2"/>
+                <entry key="m3" value-ref="music3"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <bean class="com.wangluoguimi.soundsystem.CompactDisc" name="compactDisc5">
+        <constructor-arg index="0" name="title" value="I Do ** "/>
+        <constructor-arg index="1" name="artist" value="mo wen wei **"/>
+        <constructor-arg name="tracks4">
+            <array>
+                <ref bean="music1"/>
+                <ref bean="music2"/>
+                <ref bean="music3"/>
+            </array>
+        </constructor-arg>
+    </bean>
+
+    <bean class="com.wangluoguimi.soundsystem.CompactDisc" id="compactDisc2" c:title="story" c:artist="joy"/>
+
+    <bean class="com.wangluoguimi.soundsystem.CompactDisc" id="compactDisc6">
+        <property name="title" value="storey beside the bed"/>
+        <property name="artist" value="joy"/>
+        <property name="tracks">
+            <list>
+                <ref bean="music1"/>
+                <ref bean="music2"/>
+                <ref bean="music3"/>
+            </list>
+        </property>
+    </bean>
+
+
+    <util:list id="trackList">
+        <ref bean="music1"/>
+        <ref bean="music2"/>
+        <ref bean="music3"/>
+    </util:list>
+
+    <bean
+            class="com.wangluoguimi.soundsystem.CompactDisc"
+            id="compactDisc7"
+            p:title="storey beside the bed P"
+            p:artist="joy P"
+            p:tracks-ref="trackList"
+    />
 
     <bean id="cdPlayer1" class="com.wangluoguimi.soundsystem.CDPlayer">
         <constructor-arg ref="compactDisc1"/>
     </bean>
-
     <bean id="cdPlayer2" class="com.wangluoguimi.soundsystem.CDPlayer" c:cd-ref="compactDisc2"/>
-
     <bean id="cdPlayer3" class="com.wangluoguimi.soundsystem.CDPlayer" c:_0-ref="compactDisc2"/>
+    <bean id="cdPlayer4" class="com.wangluoguimi.soundsystem.CDPlayer">
+        <property name="cd" ref="compactDisc1"/>
+    </bean>
+    <bean id="cdPlayer5" class="com.wangluoguimi.soundsystem.CDPlayer" p:cd-ref="compactDisc7"/>
+
 </beans>

@@ -19,6 +19,11 @@ public class CDPlayerTest {
     @Autowired
     private CDPlayer cdPlayer3;
 
+    @Autowired
+    private CDPlayer cdPlayer4;
+
+    @Autowired
+    private CDPlayer cdPlayer5;
 
     @Test
     public void test01() {
@@ -33,5 +38,16 @@ public class CDPlayerTest {
     @Test
     public void test03(){
         cdPlayer3.play();
+    }
+
+    @Test
+    public void test04(){
+        cdPlayer4.play();
+    }
+
+
+    @Test
+    public void test05(){
+        cdPlayer5.play();
     }
 }

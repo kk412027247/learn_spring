@@ -16,16 +16,28 @@ public class AppTest {
     private CompactDisc compactDisc1;
 
     @Autowired
+    @Qualifier("compactDisc2")
     private CompactDisc compactDisc2;
 
     @Autowired
-    @Qualifier("compactDisc2")
     private CompactDisc compactDisc3;
+
+    @Autowired
+    private CompactDisc compactDisc4;
+
+    @Autowired
+    private CompactDisc compactDisc5;
+
+    @Autowired
+    private CompactDisc compactDisc6;
 
     @Test
     public void test01(){
         compactDisc1.play();
         compactDisc2.play();
         compactDisc3.play();
+        compactDisc4.play();
+        compactDisc5.play();
+        compactDisc6.play();
     }
 }
